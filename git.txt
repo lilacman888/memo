@@ -1,0 +1,306 @@
+********************************
+*       Git   -   20.05.27 Wed          *
+********************************
+출처: 
+https://recoveryman.tistory.com/267 [회복맨 블로그]
+https://recoveryman.tistory.com/267
+********************************************cheol********************************************
+* 올리기 *
+※올리기 전 이미 git에 수정한 파일이 있다면
+> git pull "경로 이름" "branch 이름"
+
+1. login
+> git config --global user.name "name"
+> git config --global user.email "email"
+> git config --global core.autocrlf true	(window에서 실행시)
+
+2. 변경사항 확인
+//Unstaged 상태인 것들만 보여준다(수정중인 상태/신규X)
+> git diff
+//변경된 목록 확인(신규포함)
+> git status
+//커밋 하려고 하려Staging Area에 넣은 파일의 변경 부분을 보고 싶으면 git diff --staged 옵션을 사용한다.
+//이 명령은 저장소에 커밋한 것과 Staging Area에 있는 것을 비교한다.
+//첫 사용시 remote 추가
+> git remote add "저장소 명칭" "git주소"
+
+3. git add/commit
+> git add ("."/ "*.*" : 모든 파일)
+> git commit -m "comment"
+
+	- add 취소 > git reset HEAD "파일.확장자(없으면 모두 취소)"
+	- commit 취소 (*되돌아간 commit 이후 commit 정보가 사라지기 때문에 주의)
+	//취소하고 해당 파일들은 stated 상태로
+		> git reset --soft HEAD^
+	//취소하고 해당 파일들은 unstated 상태로 워킹 디렉토리 파일 보존
+		> git reset --mixed HEAD^
+		> git reset HEAD^ : 위와 동일 (^ 대신 ~n : 마지막 n개의 commit 취소)
+	//취소하고 해당 파일들을 unstaged 상태로 워킹 디렉토리 파일 삭제. 즉, 모두 취소
+		> git reset --hard HEAD^
+	- commit message 변경 
+		> git commit --amend -m "comment"
+
+4. git push "ref(원격저장소 이름이라고 생각?)" "branch 이름(master)"
+> git push origin master
+	- git log 확인
+	- push 취소 
+	//최근 커밋 취소(기본 옵션 : --mixed)
+		> git reset HEAD^
+	//원하는 시점으로 워킹디렉토리를 되돌림
+		> git reflog (-g)		//최근 기록 확인
+		> git reset HEAD@{"n"}		또는 
+		=
+		> git reset "commit id"
+
+* 내려받기 *
+1.해당 경로로 이동
+> cd "경로"
+2. git fetch/pull "ref(원격저장소 이름)" "branch 이름"
+> git "fetch or pull" origin master		//차이 아직 모름
+	- git log 확인
+
+#####유용한######
+pwd : 현재 경로 확인
+#####유용한######
+*******************************************cheol********************************************
+
+
+git init : git 생성하기
+git clone git_path : 코드가져오기
+git checkout branch_name : 브랜치 선택하기
+git checkout -t remote_path/branch_name : 원격 브랜치 선택하기
+git branch branch_name : 브랜치 생성하기
+git branch -r : 원격 브랜치 목록보기
+git branch -a : 로컬 브랜치 목록보기
+git branch -m branch_name change_branch_name : 브랜치 이름 바꾸기
+git branch -d branch_name : 브랜치 삭제하기
+git diff : 변경내용 확인하기(Unstaged 상태인 것들만 보여준다)
+git push remote_name — delete branch_name : 원격 브랜치 삭제하기 ( git push origin — delete gh-pages )
+git add file_path : 수정한 코드 선택하기 ( git add * )
+git commit -m “commit_description” : 선택한 코드 설명 적기 ( git commit -m “내용”)
+git push romote_name branch_name : add하고 commit한 코드 git server에 보내기 (git push origin master)
+git pull origin master : git서버에서 최신 코드 받아와 merge 하기
+git fetch : git서버에서 최신 코드 받아오기
+git reset —-hard HEAD^ : commit한 이전 코드 취소하기
+git reset —-soft HEAD^ : 코드는 살리고 commit만 취소하기
+git reset —-merge : merge 취소하기
+git reset — hard HEAD && git pull : git 코드 강제로 모두 받아오기
+git config — global user.name “user_name ” : git 계정Name 변경하기
+git config — global user.email “user_email” : git 계정Mail변경하기
+git stash / git stash save “description” : 작업코드 임시저장하고 브랜치 바꾸기
+git stash pop : 마지막으로 임시저장한 작업코드 가져오기
+git branch — set-upstream-to=remote_path/branch_name : git pull no tracking info 에러해결
+
+
+MAC***********************************************************************************
+----------------------------------------------------------------------------------------------------
+https://handam.tistory.com/127
+
+core.autocrlf
+$ git config --global core.autocrlf true
+
+윈도에서 개발하는 동료와 함께 일하면 줄 바꿈(New Line) 문자에 문제가 생긴다. 
+윈도는 줄 바꿈 문자로 CR(Carriage-Return)과 LF(Line Feed) 문자를 둘 다 사용하지만, 
+Mac과 Linux는 LF 문자만 사용한다. 아무것도 아닌 것 같지만, 크로스 플랫폼 프로젝트에서는
+ 꽤 성가신 문제다.
+
+Git은 커밋할 때 자동으로 CRLF를 LF로 변환해주고 반대로 Checkout할 때 LF를 CRLF로 
+변환해 주는 기능이 있다. core.autocrlf 설정으로 이 기능을 켤 수 있다. 
+윈도에서 이 값을 true로 설정하면 Checkout할 때 LF 문자가 CRLR 문자로 변환된다
+----------------------------------------------------------------------------------------------------
+MAC***********************************************************************************
+
+
+Git --> Eclipse-------------------------------------------------------------------------------------
+[Help] >[Eclipse Marketplace]>Find : [Egit]
+Git --> Eclipse-------------------------------------------------------------------------------------
+* 사전 지식
+저장소는 파일이나 디렉토리를 저장하는 장소. 변경 이력을 관리하고자하는 디렉토리 등을 저장소의 관리하에 두는 것으로, 
+그 디렉토리에 있는 파일 등의 변경 내역을 기록 할 수 있다.
+저장소는 자신의 컴퓨터에 있는 '로컬저장소'고 서버 등 네트워크에 있는 '원경저장소'
+기본적으로 로컬 저장소에서 작업을 수행하고 그결과를 원격 저장소에 저장함
+
+**Eclipse 내부에서 실행방법
+https://d-e-v.tistory.com/3
+**Eclipse 내부에서 실행방법
+
+
+1.로그인
+https://gasaesososo.tistory.com/10?category=726951
+> git config --global user.name "이름"
+> git config --global user.email "메일주소@gmail.com"
+commit : 파일을 추가하거나 변경 내용을 저장소에 저장하는 작업
+push : 파일을 추가하거나 변경 내용을 원경 저장소에 업로드하는 작업
+
+branch : 소프트웨어 개발은 현재 출시하고 있는 버전의 유지 보수를 하면서 새로운 기능 추가 및 버그 수정을 할 수 있음.
+이러한 병렬로 수행되는 여러 버전 관리를 위해 github에는 branch라는 기능이 있음
+지점은 역사의 흐름을 분기하여 기록 해 나가는 것.
+분기 한 지점은 다른 지점의 영향을 받지 않기 때문에 같은 저장소에서 각각 개발 가능
+
+* 사용법
+1. Github에 저장소 작성(git init) 또는 복제 (git clone)
+2. 파일의 작성, 편집
+3. 파일의 생성/ 변경/ 삭제를 git 인덱스에 추가 (git add)
+4. 변경 결과를 로컬 저장소에 커밋(git commit)
+5. 로컬 저장소를 푸쉬해 원경 저장소에 반영(git push)
+
+
+GitHub에 저장소 생성
+Repository name* = 저장소 이름
+Description = 저장소 설명
+저장소 유형
+	Public = 공유
+	Private = 비공유/유료
+
+* 파일 작성 및 편집
+> mkdir test - 'test'라는폴더 생성
+================================================================
+> echo "내용" >> "$(date +%y)$(date +%m)$(date +%d)_$(date +%H)$(date +%M)_README.md
+================================================================
+
+> cd  test - change directory 'test'
+> git init - 현재 디렉토리를 Git저장소로 변환
+
+* 파일 생성/ 변경/ 삭제 git 인덱스에 추가(git add)
+생성한 파일을 로컬저장소에 저장 '/test'
+인덱스는 저장소에 커밋 할 준비를 하기 위해 변경 내용을 임시로 저장할 위치
+다음 명령으로 인덱스에 추가
+> git add 파일명.확장자
+
+*변경 결과를 로컬 저장소에 커밋(git commit)
+인덱스에 추가 된 파일을 커밋
+커밋은 파일이나 디렉토리의 추가 또는 변경을 저장소에 기록하는 작업
+> git commit -m "add [new file]"
+
+저장소에 파일이 추가가 되었는지 기록 확인
+> git status
+
+원경 저장소에 반영하기 전에 원격 저장소의 정보를 추가
+이 정보는 GitHub에 표시된 원경 저장소의 주소 
+> git remote add origin https://github.com/lilacman888/'test'.git
+
+*로컬 저장소를 밀어 원격 저장소에 반영(git push)
+로컬 저장소의 변경 사항을 GitHub에 있는 원격 저장소에 반영하기 위한 명령
+> git push origin master
+
+GitHub의 사용자 이름과 암호를 입력하면, GitHub에 푸시하고 원격 저장소에 반영할 수 있음
+next) github.com - 잘 push되었나 확인
+
+*브랜치의 생성, 이동
+현재 브랜치 목록
+> git branch
+	-  *master(*=현재브랜치)
+
+새로운 브랜치 생성
+> git branch test
+
+브랜치 지점 이동
+> git checkout test
+
+
+지점 만들기 및 이동 명령
+> git checkout -b test
+확인
+> git branch
+	- *test
+	- master
+
+*브랜치에 푸시
+>git add 파일.확장자
+>git commit -m "add file 파일"
+	- 로컬 저장소에 추가
+원격 저장소의 정보는 등록제이기 때문에 브랜치 이름을 지정하는 것만으로도 푸쉬 가능
+> git push origin test
+	-GitHub = 현재 2개의 브랜치가 존재하고 test 브랜치가 push됨
+브랜치에서 풀
+다른 개발자가 test 저장소/브랜치로 개발하려면 풀명령
+> git checkout test
+실행 결과를 보면 체크 아웃 한 브랜치 test가 원격브랜치의 test에 대응을 함
+원격 브랜치 test의 코드를 가져온다
+> git pull
+로컬 파일 목록
+> ls -al
+
+*브랜치 병합
+실제 개발 현장에서는 새로운 기능의 브랜치를 만들고 개발하고, 테스트가 완료되면 메인 master 브랜치에 통합이라는
+흐름으로 개발 작업을 수행 이 브랜치의 통합 작업을 병합이라고 함
+1. 현재 분기를 master로 전화
+> git checkout master
+- test 배린치 결과를 병합
+>git merge test
+실행 결과를 보면 test 지점에서 만든 test2파일이 추가 된 것을 알 수 있음
+Github에 푸쉬
+>git push origin master
+브랜치 test의 내용이 master로 병합
+
+*브랜치 삭제
+사용하지 않는 브랜치 제거 가능
+실제 개발 현장에서는 잘못 작성되었을 경우를 제외하고 작업이 완료된 분기도 남겨두는 것이 일반적
+>git branch -d test
+결과
+>git branch
+	-*master
+
+*자주 사용하는 Git 명령
+
+1. 저장소의 상태를 확인하는 명령어
+현재 브랜치의 이름과 추가/변경된 파일 및 디렉토리 목록을 표시
+> git status
+
+2. 파일이나 디렉토리를 인덱스에 추가하는 명령어
+추가할때 [file_pattern]에는 파일 및 디렉토리 이름을 직접하고 있는 작업 외에는 
+"*.txt"처럼 와일드 카드로 여러 대상을 지정 가능
+> git add [file_pattern]
+
+3. 인덱스에 추가 된 파일이나 폴더의 내용을 저장소에 쓸 때 하는 명령어
+옵션을 지정하지 않고 이 명령을 실행하면 커밋 메세지를 작성하는 편집기를 시작
+편집기는 각각 다르기 때문에 쉽게 메세지를 지정하려면 -m옵션을 붙인 후 큰 따옴표 안에 메시시를 지정
+-a옵션을 지정하면 변경된 파일을 검색하고 인덱스에 추가하는 작업도 동시에 실행
+> git commit -am "test commit"
+
+4. 브랜치에 대해 다양한 작업을 수행하기 위해 사용하는 명령어
+> git branch
+> git branch [test] : 브랜치 만들기
+> git branch -d [test] : 지정한 브랜치 삭제
+
+5. 로컬 저장소의 브랜치를 전환할 때 사용하는 명령어
+> git checkout [test]
+
+6. 로컬 저장소의 커밋 히스토리를 탐색하는데 사용하는 명령어
+	-n옵션 내역보기 수를 지정 가능
+> git log -n 10
+
+7.저장소의 파일 내용에서 검색하고자 할 때 사용하는 명령어
+특정 단어가 포함 된 파일을 검색하고 해당 파일의 어디에 단어가 포함되어 있는지를 확인 가능
+> git grep "검색 단어"
+
+8.git clone
+기존 원격 저장소를 로컬에 다운로드하기 위하여 사용하는 명령어
+ex) GitHub에 공개되는 저장소를 자신의 컴퓨터에 다운로드할 때 사용
+>git clone [url]
+
+9. 원격 저장소를 조작하는데 사용하는 명령어
+> git remote : 원격 저장소의 이름 목록을 표시
+> git remote -v : 원격저장소에 대한 자세한 목록 보기
+> git remote add [name] [url] : 원격 저장소를 추가
+> git remote rm [name] : 원격 저장소를 제거
+
+10. 로컬 저장소의 커밋을 취소하기 위하여 사용하는 명령어
+잘못 커밋하거나 수정 누락이 있을 때 자주 사용
+> git reset -soft HEAD ^
+
+11. 현재 브랜치에 다른 지점에서 변경 사항을 병합하는데 사용하는 명령어
+> git checkout [master] git merge [test]
+	- 분기 test를 master 브랜치에 병합
+
+12. 원격 브랜치의 변경 사항을 캡처하기 위해 사용하는 명령어
+> git checkout [master] git pull origin [master]
+	- 로컬저장소의 master브랜치에 원경저장소 origin의 master 브랜치를 가져옴
+
+
+
+
+
+
+
+
