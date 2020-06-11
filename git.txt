@@ -4,6 +4,7 @@
 출처: 
 https://recoveryman.tistory.com/267 [회복맨 블로그]
 https://recoveryman.tistory.com/267
+https://nesoy.github.io/articles/2017-03/Git-Stash
 ********************************************cheol********************************************
 * 올리기 *
 ※올리기 전 이미 git에 수정한 파일이 있다면
