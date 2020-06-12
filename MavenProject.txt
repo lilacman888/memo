@@ -1,0 +1,168 @@
+20/06/12 Fri
+
+*라이브러리 관리
+Maven - 스프링
+
+DynamicWebProject ( x ) -> MavenProject
+원격 저장소 -> Local Repository
+로컬 저장소 위치 -> 설정 - maven - User Settings - Local Repository 위치 확인
+pom.xml -> maven을 관리하기 위한 환경설정 파일
+
+**************************************초기 환경설정***************************************************
+로컬저장소 복사 + pom.xml복사
+
+프로젝트 우클릭 new - other - java ORM plugin - Mybatis Configuration XML
+					Mybatis Mapper XML
+
+test 안에 파일을 src - main - resource로 옮긴다
+
+db 연동은 mybatis로 해결
+db 연동 내용 -> src.main.resource-db.propertiest파일 오라클 연동 내용으로 변경
+**************************************초기 환경설정***************************************************
+gradle
+
+Eclipse Marketplace
+orm 검색 맨위 java ORM Plugin for Eclipse 1.0 설치
+
+
+* Maven Project 생성법
+
+
+ 1. Eclipse에서 File - New - Maven Project 선택
+
+    Create a simple project(skip archetype selection) 체크 하지말고 ... next
+
+    
+    Catalog: Internal
+    Filter: 맨 아래쪽에 위치한
+
+     Group Id                 		Artifact Id
+     org.apache.maven.archetypes        maven-archtype-webapp      ...... 선택후 ..... next  
+
+
+
+ 2.
+    Group Id: com.myhome	     <--- Domain명을 역순으로 입력함
+    Artifact Id: maventest           <--- Project명을 입력함
+    Packaging: war           				     ... finish
+
+    cf. maventest 프로젝트 생성후 에러가 발생하면, Apache Tomcat 
+        Library 추가하면 에러가 사라짐.
+      
+        Apache Tomcat Library 추가 방법
+        -> maventest 프로젝트 선택후 오른 마우스 클릭 - Build Path 클릭 -
+            Configure Build Path... 클릭    Add Library 버튼 클릭해서 
+            Server  Runtime 버튼 클릭하면 됨.
+	
+	project - property - maven - project facets - java 1.5 -> 1.8로 변경
+
+
+ 3. Project 구조
+
+    maventest - src - main - java	<--- Controller, Service,  DTO, DAO(확장자가 java로 된 파일들)
+
+                           - resources	<--- MyBatis의 환경설정 파일,SQL문파일(*.xml)
+
+                           - webapp 	<--- view페이지
+
+				     -WEB-INF - 
+
+                                     	      - web.xml     	      <--- project의 환경설정 파일
+
+					<dependency>태그 안에 junit -
+					
+                                           		
+	       - pom.xml  (Maven 환경설정 파일)  
+
+
+4. Maven 환경설정 파일 설정
+   pom.xml
+
+* pom.xml 파일에 의존 라이버러리 추가
+
+http://mvnrepository.com
+
+
+ex)
+	springframework    <--- search
+
+
+
+       Spring Core   클릭
+
+       4.0.5.RELEASE   버전 클릭
+
+
+      아래쪽의 검색 결과를 pom.xml 파일에 복사해서 사용한다.
+
+      <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-core</artifactId>
+	<version>4.0.5.RELEASE</version>
+      </dependency>
+
+  
+     
+       
+만약 오라클용 JDBC Driver를 추가하기 위해서는 기존 중앙저장소에서
+
+제공하지 않을 경우에는 다른 repository를 pom.xml 파일에 추가해야 한다.
+
+<!-- 오라클 repository -->
+	<repositories>
+		<repository>
+			<id>codelds</id>
+			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
+		</repository>
+	</repositories>
+
+
+	<dependencies>
+
+		<!-- 오라클 JDBC Library -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+		</dependency>
+
+		<!-- iBatis -->
+		<dependency>
+			<groupId>org.apache.ibatis</groupId>
+			<artifactId>ibatis-sqlmap</artifactId>
+			<version>2.3.4.726</version>
+		</dependency>
+
+		<!-- mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.3</version>
+		</dependency>
+
+		<!-- jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- cos -->
+		<dependency>
+			<groupId>servlets.com</groupId>
+			<artifactId>cos</artifactId>
+			<version>05Nov2002</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+
+
+
