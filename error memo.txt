@@ -1,4 +1,4 @@
-20.05.28 Thu
+20/06/18 Thu
 git을 통해 com2에서 pull
 eclipse에서 프로젝트에 x가 뜸 -> jre 버젼이 맞지 않아(집1.8.241 /com2 1.8.231)
 project>Property>x된 jre remove> add library> jre System
@@ -17,3 +17,9 @@ export PATH=${PATH}:$JAVA_HOME/bin
 
  -- 확인 --
 > echo $PATH
+
+* port 확인
+> lsof -PiTCP -sTCP:LISTEN
+
+* jre 삭제 시 이클립스 기본 PATH jre선택 방법
+Eclipse.app -> 패키지 내용 eclipse.ini 들어가서 확인

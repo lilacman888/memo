@@ -1,0 +1,15 @@
+*** MySql ***
+20/06/18 Thu
+
+jre>lib>mysql.jar 생성
+
+서버 시작/종료
+> mysql.server start/stop
+
+-로그인
+> mysql -u[id] -p[pw] mysql
+
+-table view
+> show tables/databases;
+
+
