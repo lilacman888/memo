@@ -2,3 +2,18 @@
 git을 통해 com2에서 pull
 eclipse에서 프로젝트에 x가 뜸 -> jre 버젼이 맞지 않아(집1.8.241 /com2 1.8.231)
 project>Property>x된 jre remove> add library> jre System
+
+
+*java path 설정		https://whitepaek.tistory.com/28
+> cd /Library/Java/JavaVirtualMachines/jdk버젼/Contents/Home
+
+> vi ~/.bash_profile
+
+> export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk버젼/Contents/Home
+
+export PATH=${PATH}:$JAVA_HOME/bin
+
+> source ~/.bash_profile
+
+ -- 확인 --
+> echo $PATH
