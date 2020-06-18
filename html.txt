@@ -19,9 +19,11 @@
 <img>		src - 경로/ alt -이미지를 위한 대체텍스트 정의
 <fieldset>		form 안에 논리적으로 묶인 구성요소를 그룹으로 묶을 때 제목은 <legend>태그 사용
 <label>		리더기가 읽어주는 부분(웹접근성)에서 중요한 요소, 라벨에 표시되는 양식폼 요소 이름 지정
-<input>		type, name, value, checked,  maxlength, readonly, disabled, hidden
 <select><option>
 
+<input>		type, name, value, checked,  maxlength, readonly, disabled, hidden
+disabled = 값 전달 안됨
+readonly = 값 전달 가능
 
 Attribute 우선순위
 1	 rel 
