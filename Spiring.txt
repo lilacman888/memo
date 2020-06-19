@@ -84,3 +84,16 @@ pom.xml 수정
 
 어노테이션 외우기 10가지 정도 
 
+톰캣 포트번호 수정 "80"
+인코딩 설정!!!!!!!!!
+플러그인 추가(ORM)
+* STS에 Data source Management  추가
+
+[Help] - Install New Software...
+
+
+Add 버튼 클릭
+
+
+Name :  DTP
+Location : http://download.eclipse.org/datatools/1.14.1.201712071719/repository/ 
