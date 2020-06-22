@@ -1,0 +1,94 @@
+*Spring
+20/06/19
+
+엔터프라이즈 어플리케이션 개발의 복잡성을 줄여주기 위한 목적
+EJB 사용으로 수행되었던 모든 기능을 일반 POJO를 사용해서 가능하게 함
+경량 컨테이너 - 객체의 라이프 사이클 관리, JEE구현을 위한 다양한 API 제공
+
+*DI(Dependency Injection) 지원 - 의존성 주입
+AOP(Aspect Oriented Programming) 지원 - 관점지향(log 출력,transaction관련 처리,공통 관련)
+POJO(Plane Old Java Object) 지원 - 기존 Java 객체 지원
+JDBC를 위한 다양한 API 지원 - 복잡
+Transaction 처리를 위한 일관된 방법제공
+다양한 API 연동 지원
+
+http://www.springsource.org/
+
+3.x로 넘어가면서 maven으로 관리
+
+Spring project 생성 방법
+
+* STS(Spring Tool Suite) 플러그인 다운로드 / 설치
+
+  Spring Project를 만들기 위해서는 아래 방법중 1가지 환경을 
+  구축해야 Spring Project가 Eclipse메뉴에 나타납니다.
+
+   방법 1.
+	  [Help] - [Eclipse Marketplace]에서 STS검색
+                Eclipse 버전에 맞는 STS(Spring Tool Suite)를 선택해서 설치 
+	 학원 3.9.12v
+
+   방법 2. 
+          
+	https://spring.io/tools/sts/all  접속후 다운로드 받는다.
+
+
+
+* Spring MVC Project 생성법 (방법2 이용)
+
+  1. STS(Spring Tool Suite)를 Eclipse에 설치한다.
+     Eclipse에서 Help - Eclipse Marketplace 선택
+
+     Find : STS  입력 후에 
+            Spring Tool STS for Eclipse Luna(4.4)... install 한다.
+     
+
+  2. SpringMVC Project 생성
+     File - New - Project - Spring - Spring Lagacy Project 선택
+
+     Spring Project
+     Project name : springtest
+     Spring MVC Project 선택 .... next
+
+     Enter a topLevelPackage (e.g. com.mycompany.myapp*)
+     com.myhome.springtest		.... finish
+
+     
+
+  3. 실행 (2가지 방법중 1가지 방법으로 실행함)
+
+     방법1.
+     프로젝트(springtest) 선택후 오른마우스 클릭 
+     Run As - Run On Server를 선택해서 실행함.
+
+
+     방법2.
+     springtest-src-main-webapp-WEB-INF-views - home.jsp 파일을 
+     한번 실행 시킨후
+
+     웹브라우저에     http://localhost:8081/springtest 
+
+     
+
+     현재 시스템의 날짜, 시간이 나타나면 성공~!!
+
+     한글이 깨져서 나오면 
+
+     springtest-src-main-webapp-WEB-INF-views - home.jsp 파일에
+     
+     <%@ page language="java" contentType="text/html; charset=UTF-8" %> 
+     추가함
+
+자바버젼 수정 1.6 -> 1.8
+pom.xml 수정
+
+어노테이션 외우기 10가지 정도 
+
+톰캣 포트번호 수정 "80"
+인코딩 설정!!!!!!!!!
+플러그인 추가(ORM)
+* STS에 Data source Management  추가
+[Help] - Install New Software...
+Add 버튼 클릭
+Name :  DTP
+Location : http://download.eclipse.org/datatools/1.14.1.201712071719/repository/ 
