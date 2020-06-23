@@ -74,7 +74,7 @@ Spring project 생성 방법
 
      한글이 깨져서 나오면 
 
-     springtest-src-main-webapp-WEB-INF-views - home.jsp 파일에
+     springtest-src-main-webapp-WEB-INF-views - home.jsp 파일에q
      
      <%@ page language="java" contentType="text/html; charset=UTF-8" %> 
      추가함

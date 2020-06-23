@@ -23,3 +23,8 @@ export PATH=${PATH}:$JAVA_HOME/bin
 
 * jre 삭제 시 이클립스 기본 PATH jre선택 방법
 Eclipse.app -> 패키지 내용 eclipse.ini 들어가서 확인
+
+*eclipse 스프링 sts 설치후 maven error				https://parkpurong.tistory.com/133
+1. eclipse > run > run as > maven clean
+2. project 우클릭 > maven > Update Project > Force Update of Snapshots/Reeases 체크 후 Ok
+
