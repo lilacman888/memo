@@ -92,3 +92,23 @@ pom.xml 수정
 Add 버튼 클릭
 Name :  DTP
 Location : http://download.eclipse.org/datatools/1.14.1.201712071719/repository/ 
+
+xml<- <context:component-scan base-package="java파일이 포함된 최상위 디렉토리"/>
+
+@어노테이션
+
+@Component
+1. sample13 패키지 하위 클래스를 스캔한다는 의미를 가진다.
+2. @Component 기능에 따라 -> @Controller, @Service, @Repository 어노테이션이
+       붙어있는 클래스는 @Autowired 어노테이션을 이용해서 필요한 빈 객체를  
+       setter 메소드 없이 주입을 받는다.
+
+@Autowired
+주로 변수 위에 설정하여 해당 타입의 객체를 찾아서 자동으로 할당
+setter가 없어도
+@Controller
+
+@Service
+
+@Repository
+
