@@ -28,3 +28,11 @@ Eclipse.app -> 패키지 내용 eclipse.ini 들어가서 확인
 1. eclipse > run > run as > maven clean
 2. project 우클릭 > maven > Update Project > Force Update of Snapshots/Reeases 체크 후 Ok
 
+
+* STS content assist 오류
+https://countryxide.tistory.com/7
+java proposals : check
+
+* mysql JDBC Driver 'Time Zone' issue
+http://leejimyung.com/2016/08/14/mysql-jdbc-timezone-issue
+getConnection Method ==> ?serverTimezone=UTC			추가
