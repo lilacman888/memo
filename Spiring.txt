@@ -11,10 +11,12 @@ POJO(Plane Old Java Object) 지원 - 기존 Java 객체 지원
 JDBC를 위한 다양한 API 지원 - 복잡
 Transaction 처리를 위한 일관된 방법제공
 다양한 API 연동 지원
-
 http://www.springsource.org/
 
 3.x로 넘어가면서 maven으로 관리
+
+자료 업로드 pom.xml -> commons -fileupload 라이브러리 추가
+
 
 Spring project 생성 방법
 
@@ -111,4 +113,12 @@ setter가 없어도
 @Service
 
 @Repository
+
+@RequestMapping("name")
+
+@ModelAttribute
+
+@RestController		// @Contoller + @ResponseBody
+Spring 4.x대 이상 버전만 사용가능 (json 형태 값을 바로 돌려줌?)
+
 
