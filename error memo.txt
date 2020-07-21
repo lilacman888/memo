@@ -39,3 +39,7 @@ getConnection Method ==> ?serverTimezone=UTC			추가
 
 * eclipse import 안될 시 		https://withpie.tistory.com/entry/Eclipse-project-import-%ED%95%98%EB%A0%A4%EA%B3%A0%EB%B3%B4%EB%8B%88-already-Exist
 project 내에 .project 파일 <name>값 수정
+
+*spring rowmapper 사용시 pom.xml -> https://bigfat.tistory.com/91
+
+*spring auto reload inteliJ 포함 - >		http://hmjkor.tistory.com/438
